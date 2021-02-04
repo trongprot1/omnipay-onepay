@@ -7,7 +7,7 @@ use Omnipay\Common\AbstractGateway as BaseAbstractGateway;
  * Class AbstractGateway
  * @package Omnipay\OnePay;
  */
-abstract class AbstractGateway  extends BaseAbstractGateway
+abstract class AbstractGateway extends BaseAbstractGateway
 {
 
     /**
