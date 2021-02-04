@@ -1,5 +1,5 @@
 {
-    "name": "trongnguyen/onepay",
+    "name": "nvtr05/onepay",
     "description": "OnePay Gateway Checkout",
     "type": "library",
     "minimum-stability": "dev",
