@@ -3,14 +3,10 @@
  * OnePay Abstract Request
  */
 
-namespace Sts\Onepay\Message;
+namespace Omnipay\OnePay\Message;
 
 use \Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 
-/**
- * Class AbstractRequest
- * @package Omnipay\OnePay\Message
- */
 abstract class AbstractRequest extends BaseAbstractRequest
 {
     /**
@@ -33,43 +29,26 @@ abstract class AbstractRequest extends BaseAbstractRequest
      */
     abstract protected function getEndpoint();
 
-    /**
-     * @param $vpcPromotionList
-     * @return AbstractRequest
-     */
     public function setVpcPromotionList($vpcPromotionList)
     {
         return $this->setParameter('vpcPromotionList', $vpcPromotionList);
     }
 
-    /**
-     * @return mixed
-     */
     public function getVpcPromotionList()
     {
         return $this->getParameter('vpcPromotionList');
     }
 
-    /**
-     * @param $vpcPromotionAmountList
-     * @return AbstractRequest
-     */
     public function setVpcPromotionAmountList($vpcPromotionAmountList)
     {
         return $this->setParameter('vpcPromotionAmountList', $vpcPromotionAmountList);
     }
 
-    /**
-     * @return mixed
-     */
     public function getVpcPromotionAmountList()
     {
         return $this->getParameter('vpcPromotionAmountList');
     }
 
-    /**
-     * @return float|int
-     */
     public function getAmountInteger()
     {
         $result = parent::getAmountInteger();
@@ -81,111 +60,66 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $result;
     }
 
-    /**
-     * @return mixed
-     */
     public function getVpcAccessCode()
     {
         return $this->getParameter('vpcAccessCode');
     }
 
-    /**
-     * @param $vpcAccessCode
-     * @return AbstractRequest
-     */
     public function setVpcAccessCode($vpcAccessCode)
     {
         return $this->setParameter('vpcAccessCode', $vpcAccessCode);
     }
 
-    /**
-     * @return mixed
-     */
     public function getVpcMerchant()
     {
         return $this->getParameter('vpcMerchant');
     }
 
-    /**
-     * @param $vpcMerchant
-     * @return AbstractRequest
-     */
     public function setVpcMerchant($vpcMerchant)
     {
         return $this->setParameter('vpcMerchant', $vpcMerchant);
     }
 
-    /**
-     * @return mixed
-     */
     public function getSecureHash()
     {
         return $this->getParameter('secureHash');
     }
 
-    /**
-     * @param $secureHash
-     * @return AbstractRequest
-     */
     public function setSecureHash($secureHash)
     {
         return $this->setParameter('secureHash', $secureHash);
     }
 
-    /**
-     * @return mixed
-     */
     public function getVpcUser()
     {
         return $this->getParameter('vpcUser');
     }
 
-    /**
-     * @param $vpcUser
-     * @return AbstractRequest
-     */
     public function setVpcUser($vpcUser)
     {
         return $this->setParameter('vpcUser', $vpcUser);
     }
 
-    /**
-     * @return mixed
-     */
     public function getVpcPassword()
     {
         return $this->getParameter('vpcPassword');
     }
 
-    /**
-     * @param $vpcPassword
-     * @return AbstractRequest
-     */
     public function setVpcPassword($vpcPassword)
     {
         return $this->setParameter('vpcPassword', $vpcPassword);
     }
 
-    /**
-     * @return string
-     */
     public function getVpc_MerchTxnRef()
     {
         return $this->getTransactionId();
     }
 
-    /**
-     * @param $value
-     * @return AbstractRequest
-     */
     public function setVpc_MerchTxnRef($value)
     {
         return $this->setParameter('vpc_MerchTxnRef', $value);
     }
 
-    /**
-     * @return array
-     */
     protected function getBaseData()
     {
         return [
@@ -194,10 +128,6 @@ abstract class AbstractRequest extends BaseAbstractRequest
         ];
     }
 
-    /**
-     * @param mixed $data
-     * @return \Omnipay\Common\Message\ResponseInterface|Response
-     */
     public function sendData($data)
     {
         $url = $this->getEndpoint() . '?' . http_build_query($data, '', '&');
@@ -205,19 +135,11 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->createResponse($httpResponse->getBody());
     }
 
-    /**
-     * @param $data
-     * @return Response
-     */
     protected function createResponse($data)
     {
         return $this->response = new Response($this, $data);
     }
 
-    /**
-     * @param $data
-     * @return mixed
-     */
     public function generateDataWithChecksum($data)
     {
         ksort($data);
@@ -243,4 +165,5 @@ abstract class AbstractRequest extends BaseAbstractRequest
 
         return $data;
     }
+
 }

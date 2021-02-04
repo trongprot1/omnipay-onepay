@@ -1,5 +1,5 @@
 <?php
-namespace Sts\Onepay\Message;
+namespace Omnipay\OnePay\Message;
 
 use Omnipay\Common\Message\RedirectResponseInterface;
 

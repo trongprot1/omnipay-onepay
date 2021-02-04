@@ -2,18 +2,19 @@
 
 namespace Omnipay\OnePay;
 
-use Omnipay\Common\AbstractGateway as BaseAbstractGateway;
+use Omnipay\Common\AbstractGateway;
 
 /**
- * OnePay Class
+ * OnePay Noi Dia Class
  *
+ * @link https://mtf.onepay.vn/developer/resource/documents/docx/quy_trinh_tich_hop-noidia.pdf
  */
-class AbstractGateway extends BaseAbstractGateway
+class OnePayGateway extends AbstractGateway
 {
 
     public function getName()
     {
-        return 'OnePay Noi Dia';
+        return 'OnePay Gateway';
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sts\Onepay\Message;
+namespace Omnipay\OnePay\Message;
 
 /**
  * Complete Purchase Request
@@ -32,7 +32,7 @@ class CompletePurchaseRequest extends AbstractRequest
      */
     public function sendData($data)
     {
-        return new NoiDiaCompletePurchaseResponse($this, $data);
+        return new CompletePurchaseResponse($this, $data);
     }
 
     /**

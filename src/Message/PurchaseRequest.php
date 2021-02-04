@@ -1,6 +1,6 @@
 <?php
 
-namespace Sts\Onepay\Message;
+namespace Omnipay\OnePay\Message;
 
 /**
  * Class PurchaseRequest
