@@ -1,109 +1,69 @@
 <?php
+/**
+ * @link https://github.com/phpviet/omnipay-onepay
+ * @copyright (c) PHP Viet
+ * @license [MIT](http://www.opensource.org/licenses/MIT)
+ */
 
 namespace Omnipay\OnePay\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
-use Omnipay\Common\Message\RequestInterface;
 
 /**
- * Response
+ * @method AbstractRequest getRequest()
+ *
+ * @author Vuong Minh <vuongxuongminh@gmail.com>
+ * @since 1.0.0
  */
 class Response extends AbstractResponse
 {
+    use Concerns\ResponseProperties;
 
     /**
-     * @var string[]
+     * {@inheritdoc}
      */
-    protected $transactionStatus = [
-        '0' => 'Approved',
-        '1' => 'Bank Declined',
-        '3' => 'Merchant Not Exist',
-        '4' => 'Invalid Access Code',
-        '5' => 'Invalid Amount',
-        '6' => 'Invalid Currency Code',
-        '7' => 'Unspecified Failure',
-        '8' => 'Invalid Card Number',
-        '9' => 'Invalid Card Name',
-        '10' => 'Expired Card',
-        '11' => 'Card Not Registered Service(Internet Banking)',
-        '12' => 'Invalid Card Date',
-        '13' => 'Exist Amount',
-        '21' => 'Insufficient Fund',
-        '99' => 'User Cancel',
-        'X' => 'Failed'
-    ];
-
-
-    /**
-     * Response constructor.
-     * @param RequestInterface $request
-     * @param $data
-     */
-    public function __construct(RequestInterface $request, $data)
+    public function isSuccessful(): bool
     {
-        $this->request = $request;
-        if (!is_array($data)) {
-            parse_str($data, $this->data);
-        } else {
-            $this->data = $data;
-        }
-    }
-
-
-    /**
-     * @return bool
-     */
-    public function isSuccessful()
-    {
-        if (isset($this->data['vpc_TxnResponseCode']) && $this->data['vpc_TxnResponseCode'] == '0') {
-            $result = true;
-        } elseif (isset($this->data['vpc_ResponseCode']) && $this->data['vpc_ResponseCode'] == '0') {
-            $result = true;
-        } else {
-            $result = false;
-        }
-
-        return $result;
+        return '0' === $this->getCode();
     }
 
     /**
-     * To capture , refund , ...
-     *
-     * @return mixed
+     * {@inheritdoc}
      */
-    public function getTransactionReference()
+    public function isCancelled(): bool
     {
-        if (isset($this->data['vpc_TransactionNo'])) {
-            return $this->data['vpc_TransactionNo'];
-        }
-
-        return null;
+        return '99' === $this->getCode();
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
-        if (isset($this->data['vpc_TxnResponseCode'])) {
-            return $this->getResponseDescription($this->data['vpc_TxnResponseCode']);
-        } elseif (isset($this->data['vpc_ResponseCode'])) {
-            return $this->getResponseDescription($this->data['vpc_ResponseCode']);
-        } else {
-            return $this->data['vpc_Message'];
-        }
+        return $this->data['vpc_Message'] ?? null;
     }
 
     /**
-     * @param $responseCode
-     * @return string
+     * {@inheritdoc}
      */
-    protected function getResponseDescription($responseCode)
+    public function getCode(): ?string
     {
-        if (array_key_exists($responseCode, $this->transactionStatus)) {
-            return $this->transactionStatus[$responseCode];
-        }
+        return $this->data['vpc_TxnResponseCode'] ?? null;
+    }
 
-        return $this->transactionStatus['X'];
+    /**
+     * {@inheritdoc}
+     */
+    public function getTransactionId(): ?string
+    {
+        return $this->data['vpc_MerchTxnRef'] ?? null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTransactionReference(): ?string
+    {
+        return $this->data['vpc_TransactionNo'] ?? null;
     }
 }
