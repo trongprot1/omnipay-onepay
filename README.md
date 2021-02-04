@@ -6,7 +6,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "dilab/omnipay-onepay": "~2.0"
+        "nvtr05/omnipay-onepay": "~1.0.0"
     }
 }
 ```
