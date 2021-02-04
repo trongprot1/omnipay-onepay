@@ -3,7 +3,7 @@
  * OnePay Abstract Request
  */
 
-namespace Omnipay\OnePay\Message;
+namespace Sts\Onepay\Message;
 
 use \Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 

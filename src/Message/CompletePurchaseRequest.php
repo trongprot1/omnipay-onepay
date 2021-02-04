@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\OnePay\Message;
+namespace Sts\Onepay\Message;
 
 /**
  * Complete Purchase Request
