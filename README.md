@@ -1,44 +1,51 @@
-## Installation
+<p align="center">
+    <a href="https://onepay.vn" target="_blank">
+        <img src="https://raw.githubusercontent.com/phpviet/omnipay-onepay/master/resources/logo.png">
+    </a>
+    <h1 align="center">Omnipay: OnePay</h1>
+    <br>
+    <p align="center">
+    <a href="https://packagist.org/packages/phpviet/omnipay-onepay"><img src="https://img.shields.io/packagist/v/phpviet/omnipay-onepay.svg?style=flat-square" alt="Latest version"></a>
+    <a href="https://travis-ci.org/phpviet/omnipay-onepay"><img src="https://img.shields.io/travis/phpviet/omnipay-onepay/master.svg?style=flat-square" alt="Build status"></a>
+    <a href="https://scrutinizer-ci.com/g/phpviet/omnipay-onepay"><img src="https://img.shields.io/scrutinizer/g/phpviet/omnipay-onepay.svg?style=flat-square" alt="Quantity score"></a>
+    <a href="https://styleci.io/repos/189053724"><img src="https://styleci.io/repos/189053724/shield?branch=master" alt="StyleCI"></a>
+    <a href="https://packagist.org/packages/phpviet/omnipay-onepay"><img src="https://img.shields.io/packagist/dt/phpviet/omnipay-onepay.svg?style=flat-square" alt="Total download"></a>
+    <a href="https://packagist.org/packages/phpviet/omnipay-onepay"><img src="https://img.shields.io/packagist/l/phpviet/omnipay-onepay.svg?style=flat-square" alt="License"></a>
+    </p>
+</p>
 
-Omnipay is installed via [Composer](http://getcomposer.org/). To install, simply add it
-to your `composer.json` file:
+## Thông tin
 
-```json
-{
-    "require": {
-        "nvtr05/omnipay-onepay": "~1.0.0"
-    }
-}
+Thư viện hổ trợ tích cổng thanh toán MoMo phát triển trên nền tảng [Omnipay League](https://github.com/thephpleague/omnipay).
+
+Để nắm sơ lược về khái niệm và cách sử dụng các **Omnipay** gateways bạn hãy truy cập vào [đây](https://omnipay.thephpleague.com/) 
+để kham khảo.
+
+## Cài đặt
+
+Cài đặt Omnipay MoMo thông qua [Composer](https://getcomposer.org):
+
+```bash
+composer require phpviet/omnipay-onepay
 ```
+## Cách sử dụng
 
-And run composer to update your dependencies:
+### Tích hợp sẵn trên các framework phổ biến hiện tại
 
-    $ curl -s http://getcomposer.org/installer | php
-    $ php composer.phar update
+- [`Laravel`](https://github.com/phpviet/laravel-omnipay)
+- [`Symfony`](https://github.com/phpviet/symfony-omnipay)
+- [`Yii`](https://github.com/phpviet/yii-omnipay)
 
-## Basic Usage
+hoặc nếu bạn muốn sử dụng không dựa trên framework thì tiếp tục xem tiếp.
 
-The following methods are provided by this package:
+### Cách sử dụng các gateway
 
-+ purchase
-+ completePurchase
+- [`Domestic (nội địa)`](docs/Domestic.md)
+- [`International (quốc tế)`](docs/International.md)
 
-For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
-repository.
+## Dành cho nhà phát triển
 
-
-## Support
-
-If you are having general issues with Omnipay, we suggest posting on
-[Stack Overflow](http://stackoverflow.com/). Be sure to add the
-[omnipay tag](http://stackoverflow.com/questions/tagged/omnipay) so it can be easily found.
-
-If you want to keep up to date with release anouncements, discuss ideas for the project,
-or ask more detailed questions, there is also a [mailing list](https://groups.google.com/forum/#!forum/omnipay) which
-you can subscribe to.
-
-If you believe you have found a bug, please report it using the [GitHub issue tracker](https://github.com/dilab/omnipay-2c2p/issues),
-or better yet, fork the library and submit a pull request.
-
-## Disclaimer
-This package is a fork and modification of https://gitlab.com/ngocnh/omnipay-onepay
+Nếu như bạn cảm thấy thư viện chúng tôi còn thiếu sót hoặc sai sót và bạn muốn đóng góp để phát triển chung, 
+chúng tôi rất hoan nghênh! Hãy tạo các `issue` để đóng góp ý tưởng cho phiên bản kế tiếp hoặc tạo `PR` 
+để đóng góp phần thiếu sót hoặc sai sót. Riêng đối với các lỗi liên quan đến bảo mật thì phiền bạn gửi email đến
+vuongxuongminh@gmail.com thay vì tạo issue. Cảm ơn!
