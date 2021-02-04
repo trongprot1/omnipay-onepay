@@ -1,27 +1,8 @@
 {
-    "name": "dilab/omnipay-onepay",
+    "name": "nvtr05/omnipay-onepay",
     "description": "OnePay gateway for Omnipay payment processing library",
-    "keywords": [
-        "gateway",
-        "merchant",
-        "omnipay",
-        "pay",
-        "onepay",
-        "noidia",
-        "quocte",
-        "onepay",
-        "payment",
-        "paypal",
-        "purchase"
-    ],
     "type": "library",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "xu ding",
-            "email": "thedilab@gmail.com"
-        }
-    ],
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": { "Omnipay\\OnePay\\" : "src/" }
